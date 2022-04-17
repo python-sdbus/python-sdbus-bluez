@@ -2,7 +2,7 @@
 
 # Copyright (C) 2022 igo95862
 
-# This file is part of py_sd_bus
+# This file is part of python-sdbus
 
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -17,12 +17,34 @@
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
-.mypy_cache
-.vscode
-*.pyc
-__pycache__
-build
-strace*.txt
-*.so
-.cache
-wheels
+from __future__ import annotations
+
+from typing import Any, Dict, Tuple
+
+from sdbus import DbusInterfaceCommonAsync, dbus_method_async
+
+
+class ProfileManagerInterfaceAsync(
+    DbusInterfaceCommonAsync,
+    interface_name='org.bluez.ProfileManager1',
+):
+
+    @dbus_method_async(
+        input_signature='osa{sv}',
+    )
+    async def register_profile(
+        self,
+        profile_path: str,
+        uuid: str,
+        options: Dict[str, Tuple[str, Any]],
+    ) -> None:
+        raise NotImplementedError
+
+    @dbus_method_async(
+        input_signature='o',
+    )
+    async def unregister_profile(
+        self,
+        profile_path: str,
+    ) -> None:
+        raise NotImplementedError
