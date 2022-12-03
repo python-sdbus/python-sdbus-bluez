@@ -48,3 +48,34 @@ class ProfileManagerInterfaceAsync(
         profile_path: str,
     ) -> None:
         raise NotImplementedError
+
+class ProfileInterfaceAsync(
+    DbusInterfaceCommonAsync,
+    interface_name='org.bluez.Profile1',
+):
+
+    @dbus_method_async()
+    async def release(
+            self,
+    ) -> None:
+        raise NotImplementedError
+
+    @dbus_method_async(
+        input_signature='oha{sv}',
+    )
+    async def new_connection(
+            self,
+            device: str,
+            fd: int,
+            fd_properties: Dict[str, Tuple[str, Any]],
+    ) -> None:
+        raise NotImplementedError
+
+    @dbus_method_async(
+        input_signature='o',
+    )
+    async def request_disconnection(
+            self,
+            device: str,
+    ) -> None:
+        raise NotImplementedError
