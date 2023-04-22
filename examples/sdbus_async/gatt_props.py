@@ -62,7 +62,7 @@ async def print_props(prop_dict: dict[str, Any], indent: str) -> None:
             print(f"{indent}{key}: {await prop_dict[key]}")
         except Exception:
             missing_properties.append(key)
-    print("missing propeties:", missing_properties)
+    print("missing properties:", missing_properties)
 
 
 async def print_char_props(dbus: SdBus, dev_path: str,
@@ -159,7 +159,7 @@ async def main(dev_path: str) -> None:
     await discover(dbus)
 
     # connect to the device
-    print(f"Conneting to {dev_path}...")
+    print(f"Connecting to {dev_path}...")
     try:
         await device.connect()
     except NotImplementedError as e:
@@ -169,7 +169,7 @@ async def main(dev_path: str) -> None:
         print(e)
         print(f"failed to connect: {e}")
         return
-    print("Conneted")
+    print("Connected")
 
     # Get services and characteristics and print their properties
     await sleep(2)
@@ -180,7 +180,7 @@ async def main(dev_path: str) -> None:
             for service in services:
                 await print_service_props(dbus, dev_path, service)
             break
-            await sleep(1)
+        await sleep(1)
 
     # Clean up
     await device.disconnect()
