@@ -32,7 +32,7 @@ class AgentManagerInterface(
     @dbus_method(
         input_signature='os',
     )
-    async def register_agent(
+    def register_agent(
         self,
         agent_path: str,
         capability: str,
@@ -42,7 +42,7 @@ class AgentManagerInterface(
     @dbus_method(
         input_signature='o',
     )
-    async def unregister_agent(
+    def unregister_agent(
         self,
         agent_path: str,
     ) -> None:
@@ -51,7 +51,7 @@ class AgentManagerInterface(
     @dbus_method(
         input_signature='o',
     )
-    async def request_default_agent(
+    def request_default_agent(
         self,
         agent_path: str,
     ) -> None:
