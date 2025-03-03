@@ -19,36 +19,40 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
 from __future__ import annotations
 
-from .adapter_api import AdapterInterfaceAsync
-from .agent_api import AgentInterfaceAsync, AgentManagerInterfaceAsync
-from .battery_api import BatteryInterfaceAsync
-from .device_api import DeviceInterfaceAsync
-from .gatt_api import (
-    GattCharacteristicInterfaceAsync,
-    GattDescriptorInterfaceAsync,
-    GattServiceInterfaceAsync,
+from sdbus import (
+    DbusInterfaceCommon,
+    dbus_method,
 )
-from .media_api import MediaInterfaceAsync
-from .network_api import NetworkServerInterfaceAsync
-from .profile_api import ProfileManagerInterfaceAsync
 
-__all__ = (
-    'AdapterInterfaceAsync',
 
-    'AgentInterfaceAsync',
-    'AgentManagerInterfaceAsync',
+class AgentManagerInterface(
+    DbusInterfaceCommon,
+    interface_name='org.bluez.AgentManager1',
+):
+    @dbus_method(
+        input_signature='os',
+    )
+    async def register_agent(
+        self,
+        agent_path: str,
+        capability: str,
+    ) -> None:
+        raise NotImplementedError
 
-    'BatteryInterfaceAsync',
+    @dbus_method(
+        input_signature='o',
+    )
+    async def unregister_agent(
+        self,
+        agent_path: str,
+    ) -> None:
+        raise NotImplementedError
 
-    'DeviceInterfaceAsync',
-
-    'GattServiceInterfaceAsync',
-    'GattCharacteristicInterfaceAsync',
-    'GattDescriptorInterfaceAsync',
-
-    'MediaInterfaceAsync',
-
-    'NetworkServerInterfaceAsync',
-
-    'ProfileManagerInterfaceAsync',
-)
+    @dbus_method(
+        input_signature='o',
+    )
+    async def request_default_agent(
+        self,
+        agent_path: str,
+    ) -> None:
+        raise NotImplementedError

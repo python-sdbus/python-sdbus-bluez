@@ -54,3 +54,28 @@ class AgentManagerInterfaceAsync(
         agent_path: str,
     ) -> None:
         raise NotImplementedError
+
+
+class AgentInterfaceAsync(
+    DbusInterfaceCommonAsync,
+    interface_name='org.bluez.Agent1',
+):
+    @dbus_method_async()
+    def cancel(self):
+        raise NotImplementedError
+
+    @dbus_method_async()
+    def release(self):
+        raise NotImplementedError
+
+    @dbus_method_async(
+        input_signature='os',
+    )
+    def authorize_service(self, device: str, uuid: str):
+        raise NotImplementedError
+
+    @dbus_method_async(
+        input_signature='o',
+    )
+    def request_authorization(self, device: str):
+        raise NotImplementedError
