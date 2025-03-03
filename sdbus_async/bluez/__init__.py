@@ -30,7 +30,7 @@ from .gatt_api import (
 )
 from .media_api import MediaInterfaceAsync
 from .network_api import NetworkServerInterfaceAsync
-from .profile_api import ProfileManagerInterfaceAsync
+from .profile_api import ProfileInterfaceAsync, ProfileManagerInterfaceAsync
 
 __all__ = (
     'AdapterInterfaceAsync',
@@ -50,5 +50,6 @@ __all__ = (
 
     'NetworkServerInterfaceAsync',
 
+    'ProfileInterfaceAsync',
     'ProfileManagerInterfaceAsync',
 )
