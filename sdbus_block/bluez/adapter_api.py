@@ -33,13 +33,13 @@ class AdapterInterface(
     interface_name='org.bluez.Adapter1',
 ):
     @dbus_method()
-    async def start_discovery(
+    def start_discovery(
         self,
     ) -> None:
         raise NotImplementedError
 
     @dbus_method()
-    async def stop_discovery(
+    def stop_discovery(
         self,
     ) -> None:
         raise NotImplementedError
@@ -47,7 +47,7 @@ class AdapterInterface(
     @dbus_method(
         input_signature='o',
     )
-    async def remove_device(
+    def remove_device(
         self,
         device_path: str,
     ) -> None:
@@ -56,7 +56,7 @@ class AdapterInterface(
     @dbus_method(
         input_signature='a{sv}',
     )
-    async def set_discovery_filter(
+    def set_discovery_filter(
         self,
         properties: Dict[str, Tuple[str, Any]],
     ) -> None:
@@ -65,7 +65,7 @@ class AdapterInterface(
     @dbus_method(
         result_signature='as',
     )
-    async def get_discovery_filters(
+    def get_discovery_filters(
         self,
     ) -> List[str]:
         raise NotImplementedError
