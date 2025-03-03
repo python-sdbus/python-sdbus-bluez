@@ -1,3 +1,4 @@
+
 # SPDX-License-Identifier: LGPL-2.1-or-later
 
 # Copyright (C) 2022 igo95862
@@ -19,63 +20,63 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
 from __future__ import annotations
 
-from sdbus import DbusInterfaceCommonAsync, dbus_method_async
+from typing import Any, Dict, Tuple
+
+from sdbus import DbusInterfaceCommonAsync, dbus_method
 
 
-class AgentManagerInterfaceAsync(
+class ProfileManagerInterface(
     DbusInterfaceCommonAsync,
-    interface_name='org.bluez.AgentManager1',
+    interface_name='org.bluez.ProfileManager1',
 ):
 
-    @dbus_method_async(
-        input_signature='os',
+    @dbus_method(
+        input_signature='osa{sv}',
     )
-    async def register_agent(
+    def register_profile(
         self,
-        agent_path: str,
-        capability: str,
+        profile_path: str,
+        uuid: str,
+        options: Dict[str, Tuple[str, Any]],
     ) -> None:
         raise NotImplementedError
 
-    @dbus_method_async(
+    @dbus_method(
         input_signature='o',
     )
-    async def unregister_agent(
+    def unregister_profile(
         self,
-        agent_path: str,
+        profile_path: str,
     ) -> None:
         raise NotImplementedError
 
-    @dbus_method_async(
-        input_signature='o',
-    )
-    async def request_default_agent(
-        self,
-        agent_path: str,
-    ) -> None:
-        raise NotImplementedError
-
-
-class AgentInterfaceAsync(
+class ProfileInterface(
     DbusInterfaceCommonAsync,
-    interface_name='org.bluez.Agent1',
+    interface_name='org.bluez.Profile1',
 ):
-    @dbus_method_async()
-    async def cancel(self):
+
+    @dbus_method()
+    def release(
+            self,
+    ) -> None:
         raise NotImplementedError
 
-    @dbus_method_async()
-    async def release(self):
-        raise NotImplementedError
-
-    @dbus_method_async(
-        input_signature='os',
+    @dbus_method(
+        input_signature='oha{sv}',
     )
-    async def authorize_service(self, device: str, uuid: str):
+    def new_connection(
+            self,
+            device: str,
+            fd: int,
+            fd_properties: Dict[str, Tuple[str, Any]],
+    ) -> None:
         raise NotImplementedError
 
-    @dbus_method_async(
+    @dbus_method(
         input_signature='o',
     )
-    async def request_authorization(self, device: str):
+    def request_disconnection(
+            self,
+            device: str,
+    ) -> None:
         raise NotImplementedError
