@@ -21,8 +21,12 @@ from __future__ import annotations
 
 from .adapter_api import AdapterInterface
 from .agent_api import AgentManagerInterface
+from .profile_api import ProfileInterface, ProfileManagerInterface
 
 __all__ = (
     'AdapterInterface',
     'AgentManagerInterface',
+
+    'ProfileInterface',
+    'ProfileManagerInterface',
 )
