@@ -22,11 +22,11 @@ from __future__ import annotations
 
 from typing import Any, Dict, Tuple
 
-from sdbus import DbusInterfaceCommonAsync, dbus_method
+from sdbus import DbusInterfaceCommon, dbus_method
 
 
 class ProfileManagerInterface(
-    DbusInterfaceCommonAsync,
+    DbusInterfaceCommon,
     interface_name='org.bluez.ProfileManager1',
 ):
 
@@ -51,7 +51,7 @@ class ProfileManagerInterface(
         raise NotImplementedError
 
 class ProfileInterface(
-    DbusInterfaceCommonAsync,
+    DbusInterfaceCommon,
     interface_name='org.bluez.Profile1',
 ):
 
