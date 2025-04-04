@@ -61,7 +61,7 @@ class AgentInterfaceAsync(
     interface_name='org.bluez.Agent1',
 ):
     @dbus_method_async()
-    async def cancel(self):
+    async def cancel(self) -> None:
         raise NotImplementedError
 
     @dbus_method_async()

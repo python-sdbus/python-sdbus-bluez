@@ -1,4 +1,3 @@
-
 # SPDX-License-Identifier: LGPL-2.1-or-later
 
 # Copyright (C) 2022 igo95862
@@ -56,19 +55,17 @@ class ProfileInterface(
 ):
 
     @dbus_method()
-    def release(
-            self,
-    ) -> None:
+    def release(self) -> None:
         raise NotImplementedError
 
     @dbus_method(
         input_signature='oha{sv}',
     )
     def new_connection(
-            self,
-            device: str,
-            fd: int,
-            fd_properties: Dict[str, Tuple[str, Any]],
+        self,
+        device: str,
+        fd: int,
+        fd_properties: Dict[str, Tuple[str, Any]],
     ) -> None:
         raise NotImplementedError
 
@@ -76,7 +73,7 @@ class ProfileInterface(
         input_signature='o',
     )
     def request_disconnection(
-            self,
-            device: str,
+        self,
+        device: str,
     ) -> None:
         raise NotImplementedError
