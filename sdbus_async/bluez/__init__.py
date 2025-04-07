@@ -20,7 +20,7 @@
 from __future__ import annotations
 
 from .adapter_api import AdapterInterfaceAsync
-from .agent_api import AgentManagerInterfaceAsync
+from .agent_api import AgentInterfaceAsync, AgentManagerInterfaceAsync
 from .battery_api import BatteryInterfaceAsync
 from .device_api import DeviceInterfaceAsync
 from .gatt_api import (
@@ -30,11 +30,12 @@ from .gatt_api import (
 )
 from .media_api import MediaInterfaceAsync
 from .network_api import NetworkServerInterfaceAsync
-from .profile_api import ProfileManagerInterfaceAsync
+from .profile_api import ProfileInterfaceAsync, ProfileManagerInterfaceAsync
 
 __all__ = (
     'AdapterInterfaceAsync',
 
+    'AgentInterfaceAsync',
     'AgentManagerInterfaceAsync',
 
     'BatteryInterfaceAsync',
@@ -49,5 +50,6 @@ __all__ = (
 
     'NetworkServerInterfaceAsync',
 
+    'ProfileInterfaceAsync',
     'ProfileManagerInterfaceAsync',
 )

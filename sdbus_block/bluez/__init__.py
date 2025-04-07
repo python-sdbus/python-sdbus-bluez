@@ -18,3 +18,15 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301 USA
 from __future__ import annotations
+
+from .adapter_api import AdapterInterface
+from .agent_api import AgentManagerInterface
+from .profile_api import ProfileInterface, ProfileManagerInterface
+
+__all__ = (
+    'AdapterInterface',
+    'AgentManagerInterface',
+
+    'ProfileInterface',
+    'ProfileManagerInterface',
+)
