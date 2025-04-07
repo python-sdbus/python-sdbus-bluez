@@ -65,17 +65,17 @@ class AgentInterfaceAsync(
         raise NotImplementedError
 
     @dbus_method_async()
-    async def release(self):
+    async def release(self) -> None:
         raise NotImplementedError
 
     @dbus_method_async(
         input_signature='os',
     )
-    async def authorize_service(self, device: str, uuid: str):
+    async def authorize_service(self, device: str, uuid: str) -> None:
         raise NotImplementedError
 
     @dbus_method_async(
         input_signature='o',
     )
-    async def request_authorization(self, device: str):
+    async def request_authorization(self, device: str) -> None:
         raise NotImplementedError
